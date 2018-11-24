@@ -18,8 +18,8 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*fresh;
 
 	i = 0;
-	if (fresh = ft_strnew(ft_strlen((char*)s)))
-		while (*str++ && *fresh)
-			*fresh++ == f(i++, (char)*s);
+	if ((fresh = ft_strnew(ft_strlen((char*)s))))
+		while (*s++ && *fresh)
+			*fresh++ = f(i++, (char)*s);
 	return (fresh);
 }

@@ -16,8 +16,8 @@ char		*ft_strmap(char const *s, char (*f)(char))
 {
 	char	*fresh;
 
-	if (fresh = ft_strnew(ft_strlen((char*)s)))
-		while (*str++ && *fresh++)
-			*fresh == f((char)*s);
+	if ((fresh = ft_strnew(ft_strlen((char*)s))))
+		while (*s++ && *fresh++)
+			*fresh = f((char)*s);
 	return (fresh);
 }

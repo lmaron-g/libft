@@ -17,7 +17,8 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	char	*ret;
 	char	*fresh;
 
-	if ((fresh = ft_strnew(ft_strlen((char*)s1) + ft_strlen((char*)s2))))
+	ret = 0;
+	if ((fresh = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
 	{
 		ret = fresh;
 		while (*s1)

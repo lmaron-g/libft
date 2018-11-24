@@ -14,11 +14,11 @@
 
 char		*ft_strnstr(const char *str, const char *sub, size_t len)
 {
-	int		i;
+	size_t	i;
 	size_t	n;
 
 	i = 0;
-	n = ft_strlen((char*)sub);
+	n = ft_strlen(sub);
 	while (i < (len - n) && str[i++])
 		if (!ft_memcmp(&str[i], sub, n))
 			return ((char*)(&str[i]));

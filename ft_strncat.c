@@ -14,8 +14,8 @@
 
 char	*ft_strncat(char *dst, const char *src, size_t num)
 {
-	int i;
-	int j;
+	size_t i;
+	size_t j;
 
 	i = 0;
 	j = 0;
@@ -28,4 +28,5 @@ char	*ft_strncat(char *dst, const char *src, size_t num)
 		j++;
 	}
 	dst[i] = '\0';
+	return (dst);
 }
