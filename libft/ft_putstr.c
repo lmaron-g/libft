@@ -17,9 +17,10 @@ void	ft_putstr(char const *s)
 	int i;
 
 	i = 0;
-	while (s[i] != '\0')
-	{
-		ft_putchar((char)s[i]);
-		i++;
-	}
+	if (s)
+		while (s[i] != '\0')
+		{
+			ft_putchar((char)s[i]);
+			i++;
+		}
 }

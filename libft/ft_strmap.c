@@ -14,10 +14,17 @@
 
 char		*ft_strmap(char const *s, char (*f)(char))
 {
+	int		i;
 	char	*fresh;
 
-	if ((fresh = ft_strnew(ft_strlen((char*)s))))
-		while (*s++ && *fresh++)
-			*fresh = f((char)*s);
+	i = 0;
+	fresh = 0;
+	if (s && f)
+		if ((fresh = ft_strnew(ft_strlen(s))))
+			while (s[i])
+			{
+				fresh[i] = f((char)s[i]);
+				i++;
+			}
 	return (fresh);
 }

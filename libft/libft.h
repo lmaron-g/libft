@@ -16,6 +16,13 @@
 # include <string.h>
 # include <stdlib.h>
 
+typedef struct		s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list   *next;
+}					t_list;
+
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, void *src, size_t n);
 void	*ft_memset(void *b, int c, size_t len);

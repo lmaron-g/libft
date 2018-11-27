@@ -27,10 +27,14 @@ char				*ft_strtrim(char const *s)
 
 	len = 0;
 	start = 0;
+	if (!s)
+		return (0);
 	fresh = (char*)s;
 	while (is_sp(*fresh++))
 		start++;
 	fresh--;
+	if (*fresh == '\0')
+		return ("");
 	while (*fresh++)
 		len++;
 	fresh--;

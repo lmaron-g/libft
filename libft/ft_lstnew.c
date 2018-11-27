@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 19:13:24 by lmaron-g          #+#    #+#             */
-/*   Updated: 2018/11/21 19:13:25 by lmaron-g         ###   ########.fr       */
+/*   Created: 2018/11/27 18:14:29 by lmaron-g          #+#    #+#             */
+/*   Updated: 2018/11/27 18:14:32 by lmaron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char		*ft_strnstr(const char *str, const char *sub, size_t len)
+t_list		*ft_lstnew(void const *content, size_tcontent_size)
 {
-	size_t	i;
-	size_t	n;
+	t_list	fresh;
 
-	i = 0;
-	if (str == sub)
-		return ((char*)(str));
-	if (!(n = ft_strlen(sub)))
-		return ((char*)(str));
-	while (str[i] && i + n < len)
-	{
-		if (!ft_memcmp(&str[i], sub, n))
-			return ((char*)(&str[i]));
-		i++;
-	}
-	return (0);
+
 }

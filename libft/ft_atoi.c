@@ -11,22 +11,35 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#define SP(c) (c == ' ' || c == '\t' || c == '\n')
+#define SP(c) (c == ' ' || c == '\n' || c == '\t' || \
+						c == '\v' || c == '\f' || c == '\r')
 
-int	ft_atoi(const char *str)
+int					ft_atoi(const char *str)
 {
-	int	negativ;
-	int	number;
+	unsigned int	num;
+	int 			i;
+	int 			sign;
 
-	while (*str && SP(*str))
-		str++;
-	if (*str == 45)
-		negativ = 1;
-	if (*str == 45 || *str == 43)
-		str++;
-	while (*str >= 48 && *str <= 57)
-		number = (number * 10) + ((int)*str++ - 48);
-	if (negativ == 1)
-		return (-number);
-	return (number);
+	num = 0;
+	sign = 1;
+	i = 0;
+	while (str[i] && SP(str[i]))
+		i++;
+	if (str[i] == '+')
+		i++;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + str[i] - '0';
+		i++;
+	}
+	if (num > 2147483647 && sign == 1)
+		return (-1);
+	else if (num > 2147483648 && sign == -1)
+		return (0);
+	return ((int)sign * num);
 }

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int			num_of_words(char *str, char c)
+int			co_wo(char *str, char c)
 {
 	int		i;
 	int		cv;
@@ -39,7 +39,7 @@ int			*lengths(char *str, char c)
 
 	i = 0;
 	c_v = -1;
-	numbers = (int*)malloc(num_of_words((char *)str, c) * sizeof(int));
+	numbers = (int*)malloc(co_wo((char *)str, c) * sizeof(int));
 	if (str[i] != c)
 	{
 		c_v = 0;
@@ -70,12 +70,14 @@ char		**ft_strsplit(char const *s, char c)
 
 	k = 0;
 	i = 0;
-	full = (char**)malloc(num_of_words((char *)s, c) * sizeof(char*) + 1);
+	if (!s || !(full = (char**)malloc(co_wo((char *)s, c) * sizeof(char*) + 1)))
+		return (0);
 	numbers = lengths((char *)s, c);
-	while (i < num_of_words((char *)s, c))
+	while (i < co_wo((char *)s, c))
 	{
 		j = 0;
-		full[i] = (char*)malloc((numbers[i] + 1) * sizeof(char));
+		if (!(full[i] = (char*)malloc((numbers[i] + 1) * sizeof(char))))
+			return (0);
 		while (s[k] == c)
 			k++;
 		while (s[k] && s[k] != c)
