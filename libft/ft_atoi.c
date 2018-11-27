@@ -10,15 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#define A(c) (c == ' ')
+#define B(c) (c == '\n')
+#define C(c) (c == '\t')
+#define D(c) (c == '\v')
+#define I(c) (c == '\f')
+#define F(c) (c == '\r')
+
+#define SP(c) (A(c) || B(c) || C(c) || D(c) || I(c) || F(c))
+
 #include "libft.h"
-#define SP(c) (c == ' ' || c == '\n' || c == '\t' || \
-						c == '\v' || c == '\f' || c == '\r')
 
 int					ft_atoi(const char *str)
 {
 	unsigned int	num;
-	int 			i;
-	int 			sign;
+	int				i;
+	int				sign;
 
 	num = 0;
 	sign = 1;
@@ -27,11 +34,10 @@ int					ft_atoi(const char *str)
 		i++;
 	if (str[i] == '+')
 		i++;
-	if (str[i] == '-')
-	{
+	if (str[i++] == '-')
 		sign = -1;
-		i++;
-	}
+	if (sign == 1)
+		i--;
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + str[i] - '0';
