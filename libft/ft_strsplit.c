@@ -1,90 +1,133 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*   ft_spliiit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 18:09:15 by lmaron-g          #+#    #+#             */
-/*   Updated: 2018/11/23 18:09:16 by lmaron-g         ###   ########.fr       */
+/*   Created: 2018/11/29 19:12:17 by lmaron-g          #+#    #+#             */
+/*   Updated: 2018/11/29 19:12:21 by lmaron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#define SIZE_T_MAX 65535
 
-int			co_wo(char *str, char c)
+static char			**ft_wordsnew(size_t size)
 {
-	int		i;
-	int		cv;
+	char			**area;
+
+	if (size == SIZE_T_MAX)
+		size--;
+	if (!(area = (char**)malloc(sizeof(char*) * (size + 1))))
+		return (0);
+	ft_memset((void**)area, (int)'\0', (size + 1));
+	return (area);
+}
+
+// static void            free_words(char **words)
+// {
+//     int                i;
+//
+//     i = 0;
+//     while (words[i])
+//     {
+//         free(words[i]);
+//         words[i] = 0;
+//         i++;
+//     }
+//     free(words);
+//     words = 0;
+// }
+
+static size_t		count_of_words(char const *str, char c)
+{
+	int				i;
+	size_t			cw;
 
 	i = 0;
-	cv = 0;
+	cw = 0;
 	if (str[0] != c)
 	{
-		cv++;
+		cw++;
 		i++;
 	}
 	i--;
 	while (str[++i + 1] != '\0')
 		if (str[i] == c && str[i + 1] != c)
-			cv++;
-	return (cv);
+			cw++;
+	return (cw);
 }
 
-int			*lengths(char *str, char c)
+static char			*ft_subword(char const *s, int start, char c)
 {
-	int		i;
-	int		c_v;
-	int		*numbers;
+	char			*fresh;
+	size_t			len;
+	int				i;
+
+	len = 0;
+	i = 0;
+	if (!s || (start > (int)ft_strlen(s)))
+		return (0);
+	while (s[start+len] != '\0' && s[start+len] != c)
+		len++;
+	if (!(fresh = ft_strnew(len)))
+		return (0);
+	while (s[start] != '\0' && s[start] != c)
+	{
+		fresh[i] = (char)s[start];
+		start++;
+		i++;
+	}
+	fresh[i] = '\0';
+	return (fresh);
+}
+
+char				**ft_strsplit(char const *s, char c)
+{
+	int				i;
+	int				j;
+	char			**words;
 
 	i = 0;
-	c_v = -1;
-	numbers = (int*)malloc(co_wo((char *)str, c) * sizeof(int));
-	if (str[i] != c)
+	j = 0;
+	words = ft_wordsnew(count_of_words(s, c));
+	if (s[0] != c)
 	{
-		c_v = 0;
-		numbers[0] = 1;
-		numbers[0]++;
+		words[j] = ft_subword(s, 0, c);
 		i++;
+		j++;
 	}
 	i--;
-	while (str[i++ + 1] != '\0')
-		if (str[i - 1] == c && str[i] != c)
-		{
-			c_v++;
-			numbers[c_v] = 0;
-			numbers[c_v]++;
+	while (s[++i + 1] != '\0')
+		if (s[i] == c && s[i + 1] != c){
+			words[j] = ft_subword(s, i + 1, c);
+			j++;
 		}
-		else if (str[i - 1] != c && str[i] != c)
-			numbers[c_v]++;
-	return (numbers);
+	return (words);
 }
 
-char		**ft_strsplit(char const *s, char c)
-{
-	int		i;
-	int		j;
-	char	**full;
-	int		*numbers;
-	int		k;
+//Исправить мемалок
 
-	k = 0;
-	i = 0;
-	if (!s || !(full = (char**)malloc(co_wo((char *)s, c) * sizeof(char*) + 1)))
-		return (0);
-	numbers = lengths((char *)s, c);
-	while (i < co_wo((char *)s, c))
+int	main()
+{
+	char **full;
+	char str[] = "r efw add suka blyad";
+
+	int i = 0;
+	int j = 0;
+	full = ft_strsplit(str, ' ');
+	while (full[i])
 	{
 		j = 0;
-		if (!(full[i] = (char*)malloc((numbers[i] + 1) * sizeof(char))))
-			return (0);
-		while (s[k] == c)
-			k++;
-		while (s[k] && s[k] != c)
-			full[i][j++] = s[k++];
-		full[i][j] = '\0';
+		while (full[i][j])
+		{
+			printf("full[%d][%d] = %c \n", i, j, full[i][j]);
+			j++;
+		}
+		printf("\n");
 		i++;
 	}
-	full[i] = (char*)'\0';
-	return (full);
+	return(0);
 }

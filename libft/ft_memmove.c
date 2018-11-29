@@ -22,7 +22,7 @@ void				*ft_memmove(void *dst, const void *src, size_t n)
 	if (fresh <= string || fresh >= (string + n))
 	{
 		while (n--)
-		*fresh++ = *string++;
+			*fresh++ = *string++;
 	}
 	else
 	{

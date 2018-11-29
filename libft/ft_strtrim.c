@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int					is_sp(char c)
+static int			is_sp(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
