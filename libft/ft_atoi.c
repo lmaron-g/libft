@@ -23,25 +23,28 @@
 
 int					ft_atoi(const char *str)
 {
-	unsigned int	num;
+	int				neg;
 	int				i;
-	int				sign;
+	long long int	num;
+	long long int	temp;
 
-	num = 0;
-	sign = 1;
 	i = 0;
-	while (str[i] && SP(str[i]))
+	neg = 0;
+	num = 0;
+	while (SP(str[i]))
 		i++;
-	if (str[i] == '+')
+	if (str[i] == 45)
+		neg = 1;
+	if ((str[i] == 45) || (str[i] == 43))
 		i++;
-	if (str[i++] == '-')
-		sign = -1;
-	if (sign == 1)
-		i--;
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	while (str[i] >= 48 && str[i] <= 57)
 	{
-		num = num * 10 + str[i] - '0';
+		temp = num;
+		num *= 10;
+		num += ((int)str[i] - 48);
+		if (num < temp)
+			return (neg == 1 ? 0 : -1);
 		i++;
 	}
-	return ((int)sign * num);
+	return (neg == 1 ? -num : num);
 }

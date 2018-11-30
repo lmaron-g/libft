@@ -11,22 +11,19 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char		*ft_strnstr(const char *str, const char *sub, size_t len)
 {
-	size_t	i;
-	size_t	n;
+	size_t	sub_l;
 
-	i = 0;
-	if (str == sub)
+	if (str == sub || *sub == '\0' || !(sub_l = ft_strlen(sub)))
 		return ((char*)(str));
-	if (!(n = ft_strlen(sub)))
-		return ((char*)(str));
-	while (str[i] && i + n < len)
+	while (*str && len-- >= sub_l)
 	{
-		if (!ft_memcmp(&str[i], sub, n))
-			return ((char*)(&str[i]));
-		i++;
+		if ((*str == *sub) && ft_strncmp(str, sub, sub_l) == 0)
+			return ((char*)str);
+		str++;
 	}
 	return (0);
 }

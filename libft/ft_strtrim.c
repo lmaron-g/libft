@@ -34,7 +34,7 @@ char				*ft_strtrim(char const *s)
 		start++;
 	fresh--;
 	if (*fresh == '\0')
-		return ("");
+		return (ft_strnew(0));
 	while (*fresh++)
 		len++;
 	fresh--;
