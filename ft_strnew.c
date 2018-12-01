@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfreeone.c                                    :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 17:41:38 by lmaron-g          #+#    #+#             */
-/*   Updated: 2018/11/28 17:41:51 by lmaron-g         ###   ########.fr       */
+/*   Created: 2018/11/22 12:58:24 by lmaron-g          #+#    #+#             */
+/*   Updated: 2018/11/22 12:58:30 by lmaron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstfreeone(t_list **alst)
+char		*ft_strnew(size_t size)
 {
-	(*alst)->content_size = 0;
-	free((*alst)->content);
-	free(*alst);
-	*alst = 0;
+	char	*area;
+
+	if (size > size + 1)
+		return (0);
+	if (!(area = (char*)malloc(size + 1)))
+		return (0);
+	ft_memset(area, (int)'\0', size + 1);
+	return (area);
 }

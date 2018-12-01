@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 22:03:11 by lmaron-g          #+#    #+#             */
-/*   Updated: 2018/11/22 22:03:13 by lmaron-g         ###   ########.fr       */
+/*   Created: 2018/11/20 21:42:50 by lmaron-g          #+#    #+#             */
+/*   Updated: 2018/11/20 21:43:19 by lmaron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strsub(char const *s, unsigned int start, size_t len)
+char		*ft_strncpy(char *dst, const char *src, size_t n)
 {
-	char	*fresh;
 	size_t	i;
 
-	if (!s || (start > ft_strlen(s)))
-		return (0);
-	if (!(fresh = ft_strnew(len)))
-		return (0);
 	i = 0;
-	while (i < len && s[start] != '\0')
+	if (n > n + 1)
+		return (0);
+	while (src[i] && i < n)
 	{
-		fresh[i] = s[start];
-		start++;
+		dst[i] = src[i];
 		i++;
 	}
-	fresh[i] = '\0';
-	return (fresh);
+	while (i < n)
+	{
+		dst[i] = '\0';
+		i++;
+	}
+	return (dst);
 }

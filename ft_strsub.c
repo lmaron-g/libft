@@ -1,45 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 13:26:04 by lmaron-g          #+#    #+#             */
-/*   Updated: 2018/11/23 13:26:06 by lmaron-g         ###   ########.fr       */
+/*   Created: 2018/11/22 22:03:11 by lmaron-g          #+#    #+#             */
+/*   Updated: 2018/11/22 22:03:13 by lmaron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			is_sp(char c)
+char		*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	if (c == ' ' || c == '\t' || c == '\n')
-		return (1);
-	return (0);
-}
+	char	*fresh;
+	size_t	i;
 
-char				*ft_strtrim(char const *s)
-{
-	size_t			len;
-	unsigned int	start;
-	char			*fresh;
-
-	len = 0;
-	start = 0;
-	if (!s)
+	if (len > len + 1)
 		return (0);
-	fresh = (char*)s;
-	while (is_sp(*fresh++))
+	if (!s || (start > ft_strlen(s)))
+		return (0);
+	if (!(fresh = ft_strnew(len)))
+		return (0);
+	i = 0;
+	while (i < len && s[start] != '\0')
+	{
+		fresh[i] = s[start];
 		start++;
-	fresh--;
-	if (*fresh == '\0')
-		return (ft_strnew(0));
-	while (*fresh++)
-		len++;
-	fresh--;
-	while (is_sp(*--fresh))
-		len--;
-	fresh = ft_strsub(s, start, len);
+		i++;
+	}
+	fresh[i] = '\0';
 	return (fresh);
 }

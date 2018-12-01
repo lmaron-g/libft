@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmacgyve <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 19:51:00 by jmacgyve          #+#    #+#             */
-/*   Updated: 2018/11/25 21:16:51 by jmacgyve         ###   ########.fr       */
+/*   Created: 2018/12/01 18:41:04 by lmaron-g          #+#    #+#             */
+/*   Updated: 2018/12/01 18:41:06 by lmaron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// its nessessry to fix
+
 size_t		ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
@@ -19,6 +19,8 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	dst_len;
 	size_t	src_len;
 
+	if (size > size + 1)
+		return (0);
 	i = ft_strlen(dst);
 	j = 0;
 	dst_len = ft_strlen(dst);

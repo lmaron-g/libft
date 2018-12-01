@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 17:47:58 by lmaron-g          #+#    #+#             */
-/*   Updated: 2018/11/21 17:48:02 by lmaron-g         ###   ########.fr       */
+/*   Created: 2018/11/22 21:15:46 by lmaron-g          #+#    #+#             */
+/*   Updated: 2018/11/22 21:15:54 by lmaron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dst, const char *src, size_t num)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	size_t i;
-	size_t j;
-
-	i = 0;
-	j = 0;
-	while (dst[i] != '\0')
-		i++;
-	while (src[j] != '\0' && j < num)
-	{
-		dst[i] = src[j];
-		i++;
-		j++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	if (n > n + 1)
+		return (0);
+	if (s1 && s2)
+		if (!ft_strncmp(s1, s2, n))
+			return (1);
+	return (0);
 }

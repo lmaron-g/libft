@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 12:58:24 by lmaron-g          #+#    #+#             */
-/*   Updated: 2018/11/22 12:58:30 by lmaron-g         ###   ########.fr       */
+/*   Created: 2018/11/21 17:47:58 by lmaron-g          #+#    #+#             */
+/*   Updated: 2018/11/21 17:48:02 by lmaron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#define SIZE_T_MAX 65535
 
-char		*ft_strnew(size_t size)
+char	*ft_strncat(char *dst, const char *src, size_t num)
 {
-	char	*area;
+	size_t i;
+	size_t j;
 
-	if (size == SIZE_T_MAX)
-		size--;
-	if (!(area = (char*)malloc(size + 1)))
+	i = 0;
+	j = 0;
+	if (num > num + 1)
 		return (0);
-	ft_memset(area, (int)'\0', size + 1);
-	return (area);
+	while (dst[i] != '\0')
+		i++;
+	while (src[j] != '\0' && j < num)
+	{
+		dst[i] = src[j];
+		i++;
+		j++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }
