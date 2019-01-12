@@ -12,16 +12,17 @@
 
 #include "../../includes/libft.h"
 
-void	ft_putstr_free(char *s)
+void	ft_putstr_free(char *src)
 {
 	int i;
 
 	i = 0;
-	if (s)
-		while (s[i] != '\0')
-		{
-			ft_putchar_free((char)s[i]);
+	if (src)
+	{
+		while (src[i] != '\0')
 			i++;
-		}
-	ft_strdel(&s);
+		write(1, src, i);
+		g_r += i;
+		ft_strdel(&src);
+	}
 }

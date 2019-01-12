@@ -24,15 +24,12 @@ void					prec_zero(char **src, int precision)
 		len--;
 	if (precision && precision > len)
 	{
-		if (**src != '-')
-			new = (char*)malloc(sizeof(char) * precision + 1);
-		else
-		{
-			new = (char*)malloc(sizeof(char) * precision + 2);
-			new[i++] = '-';
-		}
+		new = (char*)malloc(sizeof(char) * precision + 2);
 		if (**src == '-')
-			ft_strcpy(&new[precision + 1 - len], *src);
+		{
+			new[i++] = '-';
+			ft_strcpy(&new[precision + 1 - len], &(*src)[1]);
+		}
 		ft_strcpy(&new[precision - len], *src);
 		while (len++ < precision)
 			new[i++] = '0';
@@ -51,7 +48,7 @@ void					add_zero(char **src, t_specifier spec)
 	i = 0;
 	len = ft_strlen(*src);
 	new = ft_strnew(spec.width);
-	if (**src == '-' || **src == '+')
+	if (**src == '-' || **src == '+' || **src == ' ')
 		*new = **src;
 	if (**src == '0' && (*src)[1] == spec.type && spec.type)
 		new = ft_strncpy(new, *src, 2);
@@ -63,30 +60,6 @@ void					add_zero(char **src, t_specifier spec)
 	ft_strcpy(&new[i], *src + st);
 	ft_strdel(src);
 	*src = new;
-}
-
-char					*round_it(char **src)
-{
-	int					i;
-
-	i = ft_strlen(*src) - 1;
-	if ('5' <= (*src)[i] && (*src)[i] <= '9')
-	{
-		(*src)[i] = '\0';
-		while (i)
-		{
-			if ((*src)[i] == '9')
-				(*src)[i] = '0';
-			else if ('0' <= (*src)[i] && (*src)[i] <= '8')
-			{
-				(*src)[i]++;
-				return (*src);
-			}
-			i--;
-		}
-	}
-	(*src)[i] = '\0';
-	return (*src);
 }
 
 void					set_plus(char **src, t_specifier spec)
@@ -112,11 +85,14 @@ void					set_pref(char **src, char type)
 	char				*new;
 
 	i = 0;
-	new = (char*)malloc(sizeof(char) * ft_strlen(*src) + 3);
-	new[i++] = '0';
-	if (type == 'x' || type == 'X')
-		new[i++] = type;
-	ft_strcpy(&new[i], *src);
-	ft_strdel(src);
-	*src = new;
+	if (!(**src == '0' && (type == 'o' || type == 'O')))
+	{
+		new = (char*)malloc(sizeof(char) * ft_strlen(*src) + 3);
+		new[i++] = '0';
+		if (type == 'x' || type == 'X')
+			new[i++] = type;
+		ft_strcpy(&new[i], *src);
+		ft_strdel(src);
+		*src = new;
+	}
 }

@@ -85,6 +85,9 @@ FT_PRINTF = 	ft_printf.c        \
 				print_diouxx.c     \
 				spec_lenghts.c     \
 				util_find.c        \
+				additional.c       \
+				print_unicode.c    \
+				print_unicode_cs.c \
 				util_is.c          \
 				ft_putstr_free.c   \
 				ft_putchar_free.c  \
