@@ -12,7 +12,7 @@ Here you can find functions for working with `strings`, `memory`, `output` etc.
 
 Clone or download this repo and place it in the workspase folder.
 
-Go to Lift directory and `make` it.
+Go to `libft` directory and `make` it.
 
 
 ## Run
