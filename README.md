@@ -1,8 +1,8 @@
-# libft
+# Libft
 
 This is my handmade C library.
 
-Here you can find functions for working with strings, memory, output etc.
+Here you can find functions for working with `strings`, `memory`, `output` etc.
 
 
 ## Installation
