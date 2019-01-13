@@ -1,3 +1,6 @@
+![alt text](https://pp.userapi.com/c846018/v846018615/177c9d/jGkPPa9Zapw.jpg)
+
+
 # Libft
 
 This is my handmade C library.
