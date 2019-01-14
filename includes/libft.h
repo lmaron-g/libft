@@ -31,7 +31,6 @@
 # define IS_NAN(num) ((num != num) ? 1 : 0)
 # define IS_INF(num) ((num == (1.0 / 0.0) || num == (-1.0 / 0.0)) ? 1 : 0)
 
-
 typedef struct		s_specifier
 {
 	int				precision;
