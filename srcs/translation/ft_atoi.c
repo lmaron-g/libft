@@ -43,7 +43,7 @@ int					ft_atoi(const char *str)
 		num *= 10;
 		num += ((int)str[i] - 48);
 		if (num < temp)
-			return (neg == 1 ? 0 : -1);
+			ft_print_error("atoi: overflow");
 		i++;
 	}
 	return (neg == 1 ? -num : num);

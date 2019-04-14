@@ -28,6 +28,8 @@
 # define PURPUL	 "\033[0;35m"
 # define CYAN	 "\033[0;36m"
 
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 # define IS_NAN(num) ((num != num) ? 1 : 0)
 # define IS_INF(num) ((num == (1.0 / 0.0) || num == (-1.0 / 0.0)) ? 1 : 0)
 
@@ -52,7 +54,16 @@ typedef struct		s_list
 }					t_list;
 
 int g_r;
+int					duplicates(int *stack, int lenght);
 void				ft_bzero(void *s, size_t n);
+int					ft_abs(int x);
+int					ft_min_abs(int a, int b);
+int					ft_min(int a, int b);
+int					ft_max_abs(int a, int b);
+int					ft_max(int a, int b);
+int					ft_find_max(int *a, int lenght);
+int					ft_find_min(int *a, int lenght);
+int					ft_median(int *stack, int lenght);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
@@ -95,6 +106,8 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
+void				free_words(char ***words);
+size_t				count_of_words(char const *str, char c);
 char				*ft_itoa(int n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
@@ -164,5 +177,7 @@ void				print_specifier_c(t_specifier spec, va_list ap);
 void				print_specifier_p(t_specifier spec, va_list ap);
 void				print_specifier_l_w(t_specifier spec, va_list ap);
 void				print_specifier_w(t_specifier spec, va_list ap);
+
+void				ft_print_error(char *massage);
 
 #endif

@@ -25,21 +25,21 @@ static char			**ft_wordsnew(size_t size)
 	return (area);
 }
 
-static void			free_words(char **words)
+void			free_words(char ***words)
 {
 	int				i;
 
 	i = 0;
-	while (words[i])
+	while ((*words)[i])
 	{
-		free(words[i]);
-		words[i++] = 0;
+		free((*words)[i]);
+		(*words)[i++] = 0;
 	}
-	free(words);
-	words = 0;
+	free(*words);
+	(*words) = 0;
 }
 
-static size_t		count_of_words(char const *str, char c)
+size_t		count_of_words(char const *str, char c)
 {
 	int				i;
 	size_t			cw;
@@ -93,7 +93,7 @@ char				**ft_strsplit(char const *s, char c)
 	if (s[i] != c && count_of_words(s, c))
 		if (!(words[j++] = ft_subword(s, i++, c)))
 		{
-			free_words(words);
+			free_words(&words);
 			return (0);
 		}
 	i--;
@@ -101,7 +101,7 @@ char				**ft_strsplit(char const *s, char c)
 		if (s[i] == c && s[i + 1] != c)
 			if (!(words[j++] = ft_subword(s, i + 1, c)))
 			{
-				free_words(words);
+				free_words(&words);
 				return (0);
 			}
 	return (words);

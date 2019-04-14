@@ -23,10 +23,10 @@ FT_PRINTF_D = $(addprefix ./srcs/ft_printf/,$(FT_PRINTF))
 TRANSLATION_D = $(addprefix ./srcs/translation/,$(TRANSLATION))
 LINKED_LISTS_D = $(addprefix ./srcs/linked_lists/,$(LINKED_LISTS))
 
-SRCS = 		$(OTHER) $(MEMORY) $(STRINGS) $(UTIL_IS) \
+SRCS = 		$(OTHER) $(OUTPUT) $(MEMORY) $(STRINGS) $(UTIL_IS) \
 			$(FT_PRINTF) $(TRANSLATION) $(LINKED_LISTS)
 
-SRC_DIRS = 	$(OTHER_D) $(MEMORY_D) $(STRINGS_D) $(UTIL_IS_D) \
+SRC_DIRS = 	$(OTHER_D) $(OUTPUT_D) $(MEMORY_D) $(STRINGS_D) $(UTIL_IS_D) \
  			$(FT_PRINTF_D) $(TRANSLATION_D) $(LINKED_LISTS_D)
 
 OBJ_D = objs
@@ -78,6 +78,7 @@ OUTPUT =		ft_putchar.c       \
 				ft_putstr_fd.c     \
 				ft_putendl_fd.c    \
 				ft_putnbr_fd.c     \
+				ft_print_error.c   \
 
 FT_PRINTF = 	ft_printf.c        \
 				main_utilities.c   \
@@ -117,7 +118,13 @@ LINKED_LISTS =	ft_lstnew.c        \
 OTHER = 		ft_bzero.c         \
 				ft_pow.c           \
 				ft_nbrlen.c        \
-
+				ft_find_min.c      \
+				ft_find_max.c      \
+				ft_median.c        \
+				ft_min.c           \
+				ft_max.c           \
+				ft_abs.c           \
+				duplicates.c       \
 
 all: $(NAME)
 
