@@ -17,6 +17,6 @@ Go to `libft` directory and `make` it.
 
 ## Run
 
-You have to compile your main.c with `./lift/lift.a`
+You have to compile your main.c with `./libft/libft.a`
 
-Also you have to include `"./lift/libft.h"` in your code.
+Also you have to include `#include "libft/includes/libft.h"` in your code.
