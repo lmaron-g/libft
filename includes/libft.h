@@ -53,7 +53,16 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+typedef struct		s_file
+{
+	int				fd;
+	char			*thread;
+	struct s_file	*next;
+}					t_file;
+
 int g_r;
+
+int					get_next_line(const int fd, char **line);
 int					duplicates(int *stack, int lenght);
 void				ft_bzero(void *s, size_t n);
 int					ft_abs(int x);
