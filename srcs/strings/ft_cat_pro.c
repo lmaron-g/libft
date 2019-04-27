@@ -34,3 +34,30 @@ int						ft_cat_pro(char **dest, char *src)
 	*dest = ret;
 	return (1);
 }
+
+int						ft_strmerge(char **dest, char **srcs)
+{
+	char				*ret;
+	char				*fresh;
+	char				*dst;
+	char				*src;
+
+	ret = 0;
+	dst = *dest;
+	src = *srcs;
+	if (dst && src && (fresh = ft_strnew(ft_strlen(dst) + ft_strlen(src))))
+	{
+		ret = fresh;
+		while (*dst)
+			*fresh++ = (char)*dst++;
+		while (*src)
+			*fresh++ = (char)*src++;
+	}
+	else
+		return (0);
+	ft_strdel(dest);
+	ft_strdel(srcs);
+	*dest = ret;
+	*srcs = src;
+	return (1);
+}

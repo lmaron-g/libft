@@ -12,6 +12,23 @@
 
 #include "../../includes/libft.h"
 
+static int			rounder(char *src, int i)
+{
+	while (i--)
+	{
+		if (src[i] == '9')
+			src[i] = '0';
+		else if ('0' <= src[i] && src[i] <= '8')
+		{
+			src[i]++;
+			break;
+		}
+		else
+			break;
+	}
+	return(i);
+}
+
 char				*round_it(char *src)
 {
 	int				i;
@@ -19,20 +36,15 @@ char				*round_it(char *src)
 	i = ft_strlen(src) - 1;
 	if ('5' <= src[i] && src[i] <= '9')
 	{
-		src[i] = '\0';
-		while (--i)
-			if (src[i] == '9')
-				src[i] = '0';
-			else if ('0' <= src[i] && src[i] <= '8')
-			{
-				src[i]++;
-				return (src);
-			}
+		i = rounder(src, i);
+		if (src[i] == '.')
+			rounder(src, i);
 	}
-	src[i] = '\0';
+	src[ft_strlen(src) - 1] = '\0';
 	return (src);
 }
 
+				
 void				alignment_optput(t_specifier spec, char *src)
 {
 	int				len;

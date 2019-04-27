@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../includes/libft.h"
 
 static t_file		*find_node(t_file **list, int fd)
 {

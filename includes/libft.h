@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdio.h>
+# include <errno.h>
 
 # define EOC	 "\033[0m"
 # define RED     "\033[1;31m"
@@ -28,10 +29,23 @@
 # define PURPUL	 "\033[0;35m"
 # define CYAN	 "\033[0;36m"
 
+
+# define SIZE_T_MAX 65535
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
+# define FT_ABS(x) (((x) < 0) ? (-(x)) : (x))
+# define FT_MIN(a, b) (((a) < (b)) ? (a) : (b))
+# define FT_MAX(a, b) (((a) > (b)) ? (a) : (b))
 # define IS_NAN(num) ((num != num) ? 1 : 0)
 # define IS_INF(num) ((num == (1.0 / 0.0) || num == (-1.0 / 0.0)) ? 1 : 0)
+
+# define BUFF_SIZE 2048
+
+typedef enum
+{
+	false,
+	true
+}	t_bool;
 
 typedef struct		s_specifier
 {
@@ -79,6 +93,8 @@ void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void				*ft_memmove(void *dest, const void *src, size_t len);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
+
+int					ft_strmerge(char **dest, char **srcs);
 size_t				ft_strlen(const char *s);
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strdup(const char *s1);
@@ -93,15 +109,7 @@ char				*ft_strrchr(const char *s, int c);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *str);
-int					ft_isalpha(int c);
-int					ft_isdigit(int c);
-int					ft_isalnum(int c);
-int					ft_isascii(int c);
-int					ft_isprint(int c);
-int					ft_toupper(int c);
-int					ft_tolower(int c);
-void				*ft_memalloc(size_t size);
-void				ft_memdel(void **ap);
+int					ft_atoi_base(const char *str, int base);
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
@@ -115,9 +123,28 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
+int					*ft_nbrsplit(char const *s, char c);
 void				free_words(char ***words);
 size_t				count_of_words(char const *str, char c);
 char				*ft_itoa(int n);
+
+
+
+int					ft_isdigit_base(char c, int base);
+t_bool				ft_isnumber_base(char *str, int base);
+t_bool				ft_has_prefix(const char *str, int base);
+int					ft_isalpha(int c);
+int					ft_isdigit(int c);
+int					ft_isalnum(int c);
+int					ft_isascii(int c);
+int					ft_isprint(int c);
+int					ft_toupper(int c);
+int					ft_tolower(int c);
+
+void				*ft_memalloc(size_t size);
+void				ft_memdel(void **ap);
+
+
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -126,6 +153,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -138,7 +166,7 @@ int					ft_lstaddend(t_list **alst, t_list *new);
 
 int					ft_printf(char *src, ...);
 char				*ft_ftoa(long double nbr, int afterpoint);
-char				*ft_itoa_ll(long long int nb);
+char				*ft_itoa_ll(long long int n);
 char				*ft_itoa_ull(unsigned long long nb);
 char				*ft_itoa_base(int dec, int base, int up);
 char				*ft_itoa_base_ull(unsigned long long dec, int base, char x);
@@ -187,6 +215,6 @@ void				print_specifier_p(t_specifier spec, va_list ap);
 void				print_specifier_l_w(t_specifier spec, va_list ap);
 void				print_specifier_w(t_specifier spec, va_list ap);
 
-void				ft_print_error(char *massage);
+void				print_error(char *massage);
 
 #endif

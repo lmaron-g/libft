@@ -14,12 +14,7 @@
 
 char		*ft_strnew(size_t size)
 {
-	char	*area;
-
-	if (size > size + 1)
-		return (0);
-	if (!(area = (char*)malloc(size + 1)))
-		return (0);
-	ft_memset(area, (int)'\0', size + 1);
-	return (area);
+	if (size == SIZE_T_MAX)
+		print_error("ft_strnew: incorrect size");
+	return ((char *)ft_memalloc(sizeof(char) * (size + 1)));
 }

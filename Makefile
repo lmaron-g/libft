@@ -69,6 +69,8 @@ STRINGS = 		ft_cat_pro.c       \
 				ft_strjoin.c       \
 				ft_strtrim.c       \
 				ft_strsplit.c      \
+				ft_nbrsplit.c      \
+				get_next_line.c    \
 
 OUTPUT =		ft_putchar.c       \
 				ft_putstr.c        \
@@ -78,7 +80,7 @@ OUTPUT =		ft_putchar.c       \
 				ft_putstr_fd.c     \
 				ft_putendl_fd.c    \
 				ft_putnbr_fd.c     \
-				ft_print_error.c   \
+				print_error.c      \
 
 FT_PRINTF = 	ft_printf.c        \
 				main_utilities.c   \
@@ -129,7 +131,7 @@ OTHER = 		ft_bzero.c         \
 all: $(NAME)
 
 $(NAME):
-		@gcc $(42FLAGS) -c $(SRC_DIRS) -I ./includes
+		@gcc -g $(42FLAGS) -c $(SRC_DIRS) -I ./includes
 		@mkdir -p $(OBJ_D) && mv $(SRCS:.c=.o) ./$(OBJ_D)
 		@ar rc $(NAME) $(OBJS)
 		@ranlib $(NAME)

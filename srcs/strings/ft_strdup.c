@@ -14,24 +14,20 @@
 
 char		*ft_strdup(const char *s1)
 {
-	int		len;
-	int		copycount;
-	char	*rez;
+	size_t	i;
+	char	*result;
 
-	len = 0;
-	copycount = 0;
-	while (s1[len] != '\0')
-		len++;
-	rez = (char*)malloc(len + 1);
-	if (rez == (char*)0)
-		return ((char*)0);
-	while (s1[copycount])
+	if ((result = ft_strnew(ft_strlen(s1))))
 	{
-		rez[copycount] = s1[copycount];
-		copycount++;
+		i = 0;
+		while (s1[i])
+		{
+			result[i] = s1[i];
+			i++;
+		}
+		result[i] = '\0';
 	}
-	rez[copycount] = s1[copycount];
-	return (rez);
+	return (result);
 }
 
 wchar_t		*ft_unicode_strdup(wchar_t *s1)
