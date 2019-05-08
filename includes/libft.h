@@ -41,6 +41,14 @@
 
 # define BUFF_SIZE 2048
 
+
+#define ERR_PUSH_USAGE "Usage: ./push_swap [-v] [STACK]"
+#define ERR_STACK_INIT "Initialization error: stack_init();"
+#define ERR_INVALID "Invalid stack"
+
+#define ERR_CHECKER "KO"
+#define CHECKER_OK "OK!"
+
 typedef enum
 {
 	false,
@@ -74,6 +82,14 @@ typedef struct		s_file
 	struct s_file	*next;
 }					t_file;
 
+typedef struct	s_stack
+{
+	int			id;
+	int			mid;
+	int			debug;
+	int			lenght;
+	int			*stack;
+}				t_stack;
 int g_r;
 
 int					get_next_line(const int fd, char **line);
@@ -125,10 +141,8 @@ char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 int					*ft_nbrsplit(char const *s, char c);
 void				free_words(char ***words);
-size_t				count_of_words(char const *str, char c);
+size_t				count_words(char const *str, char c);
 char				*ft_itoa(int n);
-
-
 
 int					ft_isdigit_base(char c, int base);
 t_bool				ft_isnumber_base(char *str, int base);
@@ -170,7 +184,8 @@ char				*ft_itoa_ll(long long int n);
 char				*ft_itoa_ull(unsigned long long nb);
 char				*ft_itoa_base(int dec, int base, int up);
 char				*ft_itoa_base_ull(unsigned long long dec, int base, char x);
-int					ft_cat_pro(char **dest, char *src);
+int					ft_catpro(char **dest, char *src);
+int					ft_catarg(char **dest, char *src);
 int					ft_nbrlen(long long int nb);
 int					ft_nbrlen_u(unsigned long long nb);
 unsigned long long	ft_pow(int nb, int pow);
@@ -214,6 +229,18 @@ void				print_specifier_c(t_specifier spec, va_list ap);
 void				print_specifier_p(t_specifier spec, va_list ap);
 void				print_specifier_l_w(t_specifier spec, va_list ap);
 void				print_specifier_w(t_specifier spec, va_list ap);
+
+
+t_stack				*stack_init(int id, int lenght, int mid, int debug);
+void				stack_free(t_stack **a);
+void				quick_sort(t_stack *a);
+void				selection_sort(t_stack *a);
+void				insert_sort(t_stack *a);
+void				merge_sort(t_stack *a);
+void				heap_sort(t_stack *a);
+void				mid(t_stack *a);
+void				is_sort(t_stack *a);
+void				swap_elem(t_stack *stack, int a, int b);
 
 void				print_error(char *massage);
 

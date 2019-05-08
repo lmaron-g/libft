@@ -74,7 +74,7 @@ int					get_next_line(const int fd, char **line)
 	while ((bytes = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[bytes] = 0;
-		if (!(ft_cat_pro(&(temp->thread), buf)))
+		if (!(ft_catpro(&(temp->thread), buf)))
 			return (-1);
 		if (ft_strchr(buf, '\n'))
 			break ;

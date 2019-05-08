@@ -14,6 +14,7 @@ NAME = libft.a
 
 42FLAGS = -Wall -Wextra -Werror
 
+SORT_D = $(addprefix ./srcs/sort/,$(SORT))
 OTHER_D = $(addprefix ./srcs/other/,$(OTHER))
 OUTPUT_D = $(addprefix ./srcs/output/,$(OUTPUT))
 MEMORY_D = $(addprefix ./srcs/memory/,$(MEMORY))
@@ -23,10 +24,10 @@ FT_PRINTF_D = $(addprefix ./srcs/ft_printf/,$(FT_PRINTF))
 TRANSLATION_D = $(addprefix ./srcs/translation/,$(TRANSLATION))
 LINKED_LISTS_D = $(addprefix ./srcs/linked_lists/,$(LINKED_LISTS))
 
-SRCS = 		$(OTHER) $(OUTPUT) $(MEMORY) $(STRINGS) $(UTIL_IS) \
+SRCS = 		$(OTHER) $(SORT) $(OUTPUT) $(MEMORY) $(STRINGS) $(UTIL_IS) \
 			$(FT_PRINTF) $(TRANSLATION) $(LINKED_LISTS)
 
-SRC_DIRS = 	$(OTHER_D) $(OUTPUT_D) $(MEMORY_D) $(STRINGS_D) $(UTIL_IS_D) \
+SRC_DIRS = 	$(OTHER_D) $(SORT_D) $(OUTPUT_D) $(MEMORY_D) $(STRINGS_D) $(UTIL_IS_D) \
  			$(FT_PRINTF_D) $(TRANSLATION_D) $(LINKED_LISTS_D)
 
 OBJ_D = objs
@@ -42,7 +43,7 @@ MEMORY = 		ft_memccpy.c       \
 				ft_memalloc.c      \
 				ft_memdel.c        \
 
-STRINGS = 		ft_cat_pro.c       \
+STRINGS = 		ft_catpro.c       \
 				ft_strcat.c        \
 				ft_strchr.c        \
 				ft_strcmp.c        \
@@ -127,6 +128,14 @@ OTHER = 		ft_bzero.c         \
 				ft_max.c           \
 				ft_abs.c           \
 				duplicates.c       \
+
+SORT = 			init.c             \
+				stack.c            \
+				quicksort.c        \
+				heapsort.c         \
+				insertsort.c       \
+				mergesort.c        \
+				selectionsort.c    \
 
 all: $(NAME)
 

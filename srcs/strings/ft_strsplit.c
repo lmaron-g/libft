@@ -12,7 +12,33 @@
 
 #include "../../includes/libft.h"
 
-size_t		count_of_words(char const *str, char c)
+static char			**ft_wordsnew(size_t size)
+{
+	char			**area;
+
+	if (size == SIZE_T_MAX)
+		size--;
+	if (!(area = (char**)malloc(sizeof(char*) * (size + 1))))
+		return (0);
+	ft_memset(area, (int)'\0', (size + 1) * sizeof(char*));
+	return (area);
+}
+
+void			free_words(char ***words)
+{
+	int				i;
+
+	i = 0;
+	while ((*words)[i])
+	{
+		free((*words)[i]);
+		(*words)[i++] = 0;
+	}
+	free(*words);
+	(*words) = 0;
+}
+
+size_t		count_words(char const *str, char c)
 {
 	int				i;
 	size_t			cw;
@@ -33,95 +59,49 @@ size_t		count_of_words(char const *str, char c)
 	return (cw);
 }
 
-size_t	ft_count_words(char const *s, char c)
-{
-	size_t words;
-
-	words = 0;
-	while (*s)
-	{
-		while (*s == c)
-			s++;
-		if (*s)
-		{
-			words++;
-			while (*s && *s != c)
-				s++;
-		}
-	}
-	return (words);
-}
-
-static char		*ft_get_word(char *word, char c)
-{
-	char *start;
-
-	start = word;
-	while (*word && *word != c)
-		word++;
-	*word = '\0';
-	return (ft_strdup(start));
-}
-
-void			free_words(char ***words)
+static char			*ft_subword(char const *s, int start, char c)
 {
 	int				i;
+	size_t			len;
+	char			*fresh;
 
 	i = 0;
-	while ((*words)[i])
-	{
-		free((*words)[i]);
-		(*words)[i++] = 0;
-	}
-	free(*words);
-	(*words) = 0;
+	len = 0;
+	if (!s || (start > (int)ft_strlen(s)))
+		return (0);
+	while (s[start + len] != '\0' && s[start + len] != c)
+		len++;
+	if (!(fresh = ft_strnew(len)))
+		return (0);
+	while (s[start] != '\0' && s[start] != c)
+		fresh[i++] = (char)s[start++];
+	fresh[i] = '\0';
+	return (fresh);
 }
 
-
-void		free_words3(char **words, size_t i)
+char				**ft_strsplit(char const *s, char c)
 {
-	while (i--)
-		ft_strdel(&(words[i]));
-	free(*words);
-}
-
-static char		**ft_get_words(char *s, char c, size_t words_count)
-{
-	char	**words;
-	char	*word;
-	size_t	i;
+	int				i;
+	int				j;
+	char			**words;
 
 	i = 0;
-	if ((words = (char **)ft_memalloc(sizeof(char *) * (words_count + 1))))
-	{
-		while (i < words_count)
+	j = 0;
+	if (!s || !(words = ft_wordsnew(count_words(s, c))))
+		return (0);
+	if (s[i] != c && count_words(s, c))
+		if (!(words[j++] = ft_subword(s, i++, c)))
 		{
-			while (*s == c)
-				s++;
-			if (*s)
-			{
-				if (!(word = ft_get_word(s, c)))
-				{
-					free_words3(words, i);
-					return (NULL);
-				}
-				words[i++] = word;
-				s += (ft_strlen(word) + 1);
-			}
+			free_words(&words);
+			return (0);
 		}
-		words[i] = NULL;
-	}
-	return (words);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	char	**words;
-	char	*line;
-
-	if (!s || !(line = ft_strdup((char *)s)))
-		return (NULL);
-	words = ft_get_words(line, c, ft_count_words(line, c));
-	free(line);
+	i--;
+	while (s[++i + 1] && count_words(s, c))
+		if (s[i] == c && s[i + 1] != c)
+			if (!(words[j++] = ft_subword(s, i + 1, c)))
+			{
+				free_words(&words);
+				return (0);
+			}
 	return (words);
 }

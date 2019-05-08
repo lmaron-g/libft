@@ -121,7 +121,7 @@ char					*ft_itoa_base_ull(unsigned long long dec,
 // 		return (ft_strdup("nan"));
 // 	s1 = ft_itoa_ll((long)n);
 // 	s2 = ft_strnew(++precision);
-// 	ft_cat_pro(&s1, ".");
+// 	ft_catpro(&s1, ".");
 // 	n *= (n < 0.0) ? -1 : 1;
 // 	n -= (long)n;
 // 	while (precision--)
@@ -131,7 +131,7 @@ char					*ft_itoa_base_ull(unsigned long long dec,
 // 		s2[i++] = trans | 0x30;
 // 		n -= (double)trans;
 // 	}
-// 	ft_cat_pro(&s1, s2);
+// 	ft_catpro(&s1, s2);
 // 	ft_strdel(&s2);
 // 	return (round_it(s1));
 // }
@@ -148,7 +148,7 @@ char					*ft_ftoa(long double n, int precision)
 	s2 = ft_itoa_ll(FT_ABS((long)n));
 	ft_strmerge(&s1, &s2);
 	s2 = ft_strnew(++precision);
-	ft_cat_pro(&s1, ".");
+	ft_catpro(&s1, ".");
 	n -= (long)n;
 	while (precision--)
 	{

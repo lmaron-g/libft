@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbrsplit.c                                       :+:      :+:    :+:   */
+/*   ft_nbrsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -37,16 +37,16 @@ int					*ft_nbrsplit(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	if (!s || !(nbr = (int*)malloc(sizeof(int) * count_of_words(s, c))))
+	if (!s || !(nbr = (int*)ft_memalloc(sizeof(int) * count_words(s, c))))
 		return (0);
-	if (s[i] != c && count_of_words(s, c))
+	if (s[i] != c && count_words(s, c))
 		if (!(nbr[j++] = ft_subnbr(s, i++)))
 		{
 			free(&nbr);
 			return (0);
 		}
 	i--;
-	while (s[++i + 1] && count_of_words(s, c))
+	while (s[++i + 1] && count_words(s, c))
 		if (s[i] == c && s[i + 1] != c)
 			if (!(nbr[j++] = ft_subnbr(s, i + 1)))
 			{
