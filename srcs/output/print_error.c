@@ -1,4 +1,7 @@
 #include "../../includes/libft.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
 
 void		print_error(char *massage)
 {
@@ -7,4 +10,10 @@ void		print_error(char *massage)
 	else
 		perror(massage);
 	exit(1);
+}
+
+void		termination(char *massage, int fd)
+{
+	ft_putendl_fd(massage, fd);
+	exit(0);
 }

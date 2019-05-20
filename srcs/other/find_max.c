@@ -12,18 +12,49 @@
 
 #include "../../includes/libft.h"
 
-int         ft_find_min(int *a, int lenght)
+int			find_max_(int *a, int lenght)
 {
-    int     i;
-    int     min;
+	int		i;
+	int		max;
 
-    i = 0;
-    min = a[0];
-    while (i < lenght)
-    {
-        if (a[i] < min)
-            min = a[i];
-        i++;
-    }
-    return (min);
+	i = 0;
+	max = a[0];
+	while (i < lenght)
+	{
+		if (a[i] > max)
+			max = a[i];
+		i++;
+	}
+	return (max);
+}
+
+int			index_max_(int *a, int lenght)
+{
+	int		i;
+	int		max;
+	int		index;
+
+	i = 0;
+	max = a[0];
+	index = 0;
+	while (i < lenght)
+	{
+		if (a[i] > max)
+		{
+			max = a[i];
+			index = i;
+		}
+		i++;
+	}
+	return (index);
+}
+
+int			index_max(t_stack *a)
+{
+	return (index_max_(a->stack, a->lenght));
+}
+
+int			find_max(t_stack *a)
+{
+	return (find_max_(a->stack, a->lenght));
 }

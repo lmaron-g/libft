@@ -121,8 +121,8 @@ LINKED_LISTS =	ft_lstnew.c        \
 OTHER = 		ft_bzero.c         \
 				ft_pow.c           \
 				ft_nbrlen.c        \
-				ft_find_min.c      \
-				ft_find_max.c      \
+				find_min.c      \
+				find_max.c      \
 				ft_median.c        \
 				ft_min.c           \
 				ft_max.c           \

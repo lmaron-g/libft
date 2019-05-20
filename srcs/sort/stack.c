@@ -11,20 +11,31 @@ void		mid(t_stack *a)
 	dif = MAX_INT;
 	while (++i < a->lenght)
 		sum += a->stack[i];
-	sum /= a->lenght;
-	i = -1;
-	while(++i < a->lenght)
-		dif = ft_min_abs(a->stack[i] - sum, dif);
-	a->mid = sum + dif;
+	a->mid = sum / a->lenght;
 }
 
-void		is_sort(t_stack *a)
+int			is_sorted(t_stack *a, t_stack *b)
 {
 	int		i;
 
 	i = 0;
+	if (b->lenght)
+		return (0);
+	while (++i < a->lenght)
+		if (a->stack[i - 1] > a->stack[i])
+			return (0);
+	return (1);
+}
+
+void		is_sort(t_stack *a, t_stack *b)
+{
+	int		i;
+
+	i = 0;
+	if (b->lenght)
+		print_error(ERR_CHECKER);
 	while (++i < a->lenght)
 		if (a->stack[i - 1] > a->stack[i])
 			print_error(ERR_CHECKER);
-	print_error(CHECKER_OK);
+	ft_printf(CHECKER_OK);
 }

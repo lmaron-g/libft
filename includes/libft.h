@@ -47,7 +47,7 @@
 #define ERR_INVALID "Invalid stack"
 
 #define ERR_CHECKER "KO"
-#define CHECKER_OK "OK!"
+#define CHECKER_OK "OK"
 
 typedef enum
 {
@@ -84,8 +84,10 @@ typedef struct		s_file
 
 typedef struct	s_stack
 {
-	int			id;
+	char		id;
 	int			mid;
+	int			min;
+	int			max;
 	int			debug;
 	int			lenght;
 	int			*stack;
@@ -95,13 +97,18 @@ int g_r;
 int					get_next_line(const int fd, char **line);
 int					duplicates(int *stack, int lenght);
 void				ft_bzero(void *s, size_t n);
-int					ft_abs(int x);
 int					ft_min_abs(int a, int b);
-int					ft_min(int a, int b);
 int					ft_max_abs(int a, int b);
-int					ft_max(int a, int b);
-int					ft_find_max(int *a, int lenght);
-int					ft_find_min(int *a, int lenght);
+
+int					find_max_(int *a, int lenght);
+int					index_max_(int *a, int lenght);
+int					index_max(t_stack *a);
+int					find_max(t_stack *a);
+int					find_min(t_stack *a);
+int					find_min_(int *a, int lenght);
+int					index_min(t_stack *a);
+int					index_min_(int *a, int lenght);
+
 int					ft_median(int *stack, int lenght);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memset(void *b, int c, size_t len);
@@ -157,7 +164,6 @@ int					ft_tolower(int c);
 
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
-
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
@@ -231,7 +237,7 @@ void				print_specifier_l_w(t_specifier spec, va_list ap);
 void				print_specifier_w(t_specifier spec, va_list ap);
 
 
-t_stack				*stack_init(int id, int lenght, int mid, int debug);
+t_stack				*stack_init(char id, int lenght, int mid, int debug);
 void				stack_free(t_stack **a);
 void				quick_sort(t_stack *a);
 void				selection_sort(t_stack *a);
@@ -239,9 +245,11 @@ void				insert_sort(t_stack *a);
 void				merge_sort(t_stack *a);
 void				heap_sort(t_stack *a);
 void				mid(t_stack *a);
-void				is_sort(t_stack *a);
+void				is_sort(t_stack *a, t_stack *b);
+int					is_sorted(t_stack *a, t_stack *b);
 void				swap_elem(t_stack *stack, int a, int b);
 
 void				print_error(char *massage);
+void				termination(char *massage, int fd);
 
 #endif

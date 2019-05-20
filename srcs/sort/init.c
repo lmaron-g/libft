@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_stack		*stack_init(int id, int lenght, int mid, int debug)
+t_stack		*stack_init(char id, int lenght, int mid, int debug)
 {
 	t_stack	*stack;
 

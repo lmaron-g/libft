@@ -12,16 +12,9 @@
 
 #include "../../includes/libft.h"
 
-int ft_min(int a, int b)
+int	ft_min_abs(int a, int b)
 {
-    if (a < b)
-        return a;
-    return b;
-}
-
-int ft_min_abs(int a, int b)
-{
-    if (ft_abs(a) < ft_abs(b))
-        return a;
-    return b;
+	if (FT_ABS(a) < FT_ABS(b))
+		return a;
+	return b;
 }
