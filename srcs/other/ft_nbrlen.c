@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
-int					ft_nbrlen(long long int nb)
+int		ft_nbrlen(long long int nb)
 {
-	int				size;
+	int	size;
 
 	size = 1;
 	if (nb < 0)
@@ -30,9 +30,9 @@ int					ft_nbrlen(long long int nb)
 	return (size);
 }
 
-int					ft_nbrlen_u(unsigned long long nb)
+int		ft_nbrlen_u(unsigned long long nb)
 {
-	int				size;
+	int	size;
 
 	size = 1;
 	while (nb >= 10)

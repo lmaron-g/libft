@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
 char					*ft_itoa_ll(long long int n)
 {
@@ -19,7 +19,13 @@ char					*ft_itoa_ll(long long int n)
 	unsigned long long	nbr;
 	char				*str;
 
-	n < 0 ? (sign = 1, nbr = -n) : (sign = 0, nbr = n);
+	sign = 0;
+	nbr = n;
+	if (n < 0)
+	{
+		sign = 1;
+		nbr = -n;
+	}
 	i = ft_nbrlen_u(nbr) + sign;
 	str = ft_strnew(i);
 	if (!str)
@@ -82,7 +88,7 @@ char					*ft_itoa_base(int dec, int base, int up)
 }
 
 char					*ft_itoa_base_ull(unsigned long long dec,
-															int base, char x)
+						int base, char x)
 {
 	int					len;
 	char				*nbr;
@@ -107,34 +113,36 @@ char					*ft_itoa_base_ull(unsigned long long dec,
 	return (nbr);
 }
 
-// char					*ft_ftoa(long double n, int precision)
-// {
-// 	long				i;
-// 	char				*s1;
-// 	char				*s2;
-// 	unsigned char		trans;
-
-// 	i = 0;
-// 	if (IS_INF(n))
-// 		return (ft_strdup("inf"));
-// 	if (IS_NAN(n))
-// 		return (ft_strdup("nan"));
-// 	s1 = ft_itoa_ll((long)n);
-// 	s2 = ft_strnew(++precision);
-// 	ft_catpro(&s1, ".");
-// 	n *= (n < 0.0) ? -1 : 1;
-// 	n -= (long)n;
-// 	while (precision--)
-// 	{
-// 		n *= 10.0;
-// 		trans = (long int)n;
-// 		s2[i++] = trans | 0x30;
-// 		n -= (double)trans;
-// 	}
-// 	ft_catpro(&s1, s2);
-// 	ft_strdel(&s2);
-// 	return (round_it(s1));
-// }
+/*
+**char					*ft_ftoa(long double n, int precision)
+**{
+**	long				i;
+**	char				*s1;
+**	char				*s2;
+**	unsigned char		trans;
+**
+**	i = 0;
+**	if (IS_INF(n))
+**		return (ft_strdup("inf"));
+**	if (IS_NAN(n))
+**		return (ft_strdup("nan"));
+**	s1 = ft_itoa_ll((long)n);
+**	s2 = ft_strnew(++precision);
+**	ft_cat_pro(&s1, ".");
+**	n *= (n < 0.0) ? -1 : 1;
+**	n -= (long)n;
+**	while (precision--)
+**	{
+**		n *= 10.0;
+**		trans = (long int)n;
+**		s2[i++] = trans | 0x30;
+**		n -= (double)trans;
+**	}
+**	ft_cat_pro(&s1, s2);
+**	ft_strdel(&s2);
+**	return (round_it(s1));
+**}
+*/
 
 char					*ft_ftoa(long double n, int precision)
 {
@@ -144,11 +152,14 @@ char					*ft_ftoa(long double n, int precision)
 	unsigned char		trans;
 
 	i = 0;
-	n *= n < 0.0 ? (s1 = ft_strdup("-"), -1) : (s1 = ft_strdup(""), 1);
+	if (n < 0.0 && (n = -n))
+		s1 = ft_strdup("-");
+	else
+		s1 = ft_strdup("");
 	s2 = ft_itoa_ll(FT_ABS((long)n));
 	ft_strmerge(&s1, &s2);
 	s2 = ft_strnew(++precision);
-	ft_catpro(&s1, ".");
+	ft_cat_pro(&s1, ".");
 	n -= (long)n;
 	while (precision--)
 	{

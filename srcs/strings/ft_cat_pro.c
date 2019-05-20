@@ -12,7 +12,7 @@
 
 #include "../../includes/libft.h"
 
-int						ft_catpro(char **dest, char *src)
+int						ft_cat_pro(char **dest, char *src)
 {
 	char				*ret;
 	char				*fresh;
@@ -25,30 +25,6 @@ int						ft_catpro(char **dest, char *src)
 		ret = fresh;
 		while (*dst)
 			*fresh++ = (char)*dst++;
-		while (*src)
-			*fresh++ = (char)*src++;
-	}
-	else
-		return (0);
-	ft_strdel(dest);
-	*dest = ret;
-	return (1);
-}
-
-int						ft_catarg(char **dest, char *src)
-{
-	char				*ret;
-	char				*fresh;
-	char				*dst;
-
-	ret = 0;
-	dst = *dest;
-	if (dst && src && (fresh = ft_strnew(ft_strlen(dst) + 1 + ft_strlen(src))))
-	{
-		ret = fresh;
-		while (*dst)
-			*fresh++ = (char)*dst++;
-		*fresh++ = ' ';
 		while (*src)
 			*fresh++ = (char)*src++;
 	}

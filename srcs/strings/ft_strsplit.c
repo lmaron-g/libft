@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                       :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
 static char			**ft_wordsnew(size_t size)
 {
@@ -24,7 +24,7 @@ static char			**ft_wordsnew(size_t size)
 	return (area);
 }
 
-void			free_words(char ***words)
+void				free_words(char ***words)
 {
 	int				i;
 
@@ -38,7 +38,7 @@ void			free_words(char ***words)
 	(*words) = 0;
 }
 
-size_t		count_words(char const *str, char c)
+size_t				count_words(char const *str, char c)
 {
 	int				i;
 	size_t			cw;

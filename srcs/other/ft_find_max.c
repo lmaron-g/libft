@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
-int         ft_find_max(int *a, int lenght)
+int		ft_find_max(int *a, int lenght)
 {
-    int     i;
-    int     max;
+	int	i;
+	int	max;
 
-    i = 0;
-    max = a[0];
-    while (i < lenght)
-    {
-        if (a[i] > max)
-            max = a[i];
-        i++;
-    }
-    return (max);
+	i = 0;
+	max = a[0];
+	while (i < lenght)
+	{
+		if (a[i] > max)
+			max = a[i];
+		i++;
+	}
+	return (max);
 }

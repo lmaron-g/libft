@@ -19,12 +19,12 @@
 
 #define SP(c) (A(c) || B(c) || C(c) || D(c) || I(c) || F(c))
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
-int				ft_isdigit_base(char c, int base)
+int					ft_isdigit_base(char c, int base)
 {
-	const char	*alphabet = "0123456789ABCDEF";
-	int			i;
+	const char		*alphabet = "0123456789ABCDEF";
+	int				i;
 
 	i = 0;
 	while (i < base)
@@ -36,9 +36,9 @@ int				ft_isdigit_base(char c, int base)
 	return (-1);
 }
 
-t_bool			ft_has_prefix(const char *str, int base)
+t_bool				ft_has_prefix(const char *str, int base)
 {
-	size_t		i;
+	size_t			i;
 
 	i = 0;
 	if (base == 2 || base == 8 || base == 16)
@@ -55,10 +55,10 @@ t_bool			ft_has_prefix(const char *str, int base)
 	return (false);
 }
 
-t_bool			ft_isnumber_base(char *str, int base)
+t_bool				ft_isnumber_base(char *str, int base)
 {
-	size_t		i;
-	size_t		digits;
+	size_t			i;
+	size_t			digits;
 
 	i = 0;
 	digits = 0;
@@ -80,7 +80,7 @@ t_bool			ft_isnumber_base(char *str, int base)
 	return ((!str[i] && digits) ? true : false);
 }
 
-int				ft_atoi_base(const char *str, int base)
+int					ft_atoi_base(const char *str, int base)
 {
 	unsigned long	result;
 	size_t			i;

@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
-int         ft_find_min(int *a, int lenght)
+int		ft_find_min(int *a, int lenght)
 {
-    int     i;
-    int     min;
+	int	i;
+	int	min;
 
-    i = 0;
-    min = a[0];
-    while (i < lenght)
-    {
-        if (a[i] < min)
-            min = a[i];
-        i++;
-    }
-    return (min);
+	i = 0;
+	min = a[0];
+	while (i < lenght)
+	{
+		if (a[i] < min)
+			min = a[i];
+		i++;
+	}
+	return (min);
 }
