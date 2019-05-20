@@ -21,12 +21,12 @@ static int			rounder(char *src, int i)
 		else if ('0' <= src[i] && src[i] <= '8')
 		{
 			src[i]++;
-			break;
+			break ;
 		}
 		else
-			break;
+			break ;
 	}
-	return(i);
+	return (i);
 }
 
 char				*round_it(char *src)
@@ -44,7 +44,6 @@ char				*round_it(char *src)
 	return (src);
 }
 
-				
 void				alignment_optput(t_specifier spec, char *src)
 {
 	int				len;

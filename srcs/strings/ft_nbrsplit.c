@@ -37,7 +37,7 @@ int					*ft_nbrsplit(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	if (!s || !(nbr = (int*)ft_memalloc(sizeof(int) * count_words(s, c))))
+	if (!s || !(nbr = (int*)malloc(sizeof(int) * count_words(s, c))))
 		return (0);
 	if (s[i] != c && count_words(s, c))
 		if (!(nbr[j++] = ft_subnbr(s, i++)))

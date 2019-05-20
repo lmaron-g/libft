@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
 void		*ft_memalloc(size_t size)
-{	
-	void *ptr;
+{
+	void	*ptr;
 
 	if (size == SIZE_T_MAX)
 		size--;
