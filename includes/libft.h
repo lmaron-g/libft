@@ -19,16 +19,15 @@
 # include <stdio.h>
 # include <errno.h>
 
-# define EOC	 "\033[0m"
-# define RED     "\033[1;31m"
-# define YELLOW  "\033[1;33m"
-# define WHITE   "\033[1;37m"
-# define BLACK	 "\033[0;30m"
-# define GREEN	 "\033[0;32m"
-# define BLUE	 "\033[0;34m"
-# define PURPUL	 "\033[0;35m"
-# define CYAN	 "\033[0;36m"
-
+# define EOC	"\033[0m"
+# define RED	"\033[1;31m"
+# define YELLOW	"\033[1;33m"
+# define WHITE	"\033[1;37m"
+# define BLACK	"\033[0;30m"
+# define GREEN	"\033[0;32m"
+# define BLUE	"\033[0;34m"
+# define PURPUL	"\033[0;35m"
+# define CYAN	"\033[0;36m"
 
 # define SIZE_T_MAX 65535
 # define MAX_INT 2147483647
@@ -40,6 +39,14 @@
 # define IS_INF(num) ((num == (1.0 / 0.0) || num == (-1.0 / 0.0)) ? 1 : 0)
 
 # define BUFF_SIZE 2048
+
+
+#define ERR_PUSH_USAGE "Usage: ./push_swap [-v] [STACK]"
+#define ERR_STACK_INIT "Initialization error: stack_init();"
+#define ERR_INVALID "Invalid stack"
+
+#define ERR_CHECKER "KO"
+#define CHECKER_OK "OK"
 
 typedef enum
 {
@@ -74,19 +81,34 @@ typedef struct		s_file
 	struct s_file	*next;
 }					t_file;
 
+typedef struct	s_stack
+{
+	char		id;
+	int			mid;
+	int			min;
+	int			max;
+	int			debug;
+	int			lenght;
+	int			*stack;
+}				t_stack;
+
 int g_r;
 
 int					get_next_line(const int fd, char **line);
 int					duplicates(int *stack, int lenght);
 void				ft_bzero(void *s, size_t n);
-int					ft_abs(int x);
-int					ft_min_abs(int a, int b);
-int					ft_min(int a, int b);
-int					ft_max_abs(int a, int b);
-int					ft_max(int a, int b);
-int					ft_find_max(int *a, int lenght);
-int					ft_find_min(int *a, int lenght);
+int					find_max_(int *a, int lenght);
+int					index_max_(int *a, int lenght);
+int					index_max(t_stack *a);
+int					find_max(t_stack *a);
+int					find_min(t_stack *a);
+int					find_min_(int *a, int lenght);
+int					index_min(t_stack *a);
+int					index_min_(int *a, int lenght);
+
 int					ft_median(int *stack, int lenght);
+void				*ft_memalloc(size_t size);
+void				ft_memdel(void **ap);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
@@ -95,6 +117,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 
 int					ft_strmerge(char **dest, char **srcs);
+int					ft_catarg(char **dest, char *src);
 size_t				ft_strlen(const char *s);
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strdup(const char *s1);
@@ -140,10 +163,6 @@ int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 
-void				*ft_memalloc(size_t size);
-void				ft_memdel(void **ap);
-
-
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -169,7 +188,7 @@ char				*ft_itoa_ll(long long int n);
 char				*ft_itoa_ull(unsigned long long nb);
 char				*ft_itoa_base(int dec, int base, int up);
 char				*ft_itoa_base_ull(unsigned long long dec, int base, char x);
-int					ft_cat_pro(char **dest, char *src);
+int					ft_catpro(char **dest, char *src);
 int					ft_nbrlen(long long int nb);
 int					ft_nbrlen_u(unsigned long long nb);
 unsigned long long	ft_pow(int nb, int pow);
@@ -214,6 +233,19 @@ void				print_specifier_p(t_specifier spec, va_list ap);
 void				print_specifier_l_w(t_specifier spec, va_list ap);
 void				print_specifier_w(t_specifier spec, va_list ap);
 
+t_stack				*stack_init(char id, int lenght, int mid, int debug);
+void				stack_free(t_stack **a);
+void				quick_sort(t_stack *a);
+void				selection_sort(t_stack *a);
+void				insert_sort(t_stack *a);
+void				merge_sort(t_stack *a);
+void				heap_sort(t_stack *a);
+void				mid(t_stack *a);
+void				is_sort(t_stack *a, t_stack *b);
+int					is_sorted(t_stack *a, t_stack *b);
+void				swap_elem(t_stack *stack, int a, int b);
+
 void				print_error(char *massage);
+void				termination(char *massage, int fd);
 
 #endif

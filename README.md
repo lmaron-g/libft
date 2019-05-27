@@ -19,4 +19,4 @@ Go to `libft` directory and `make` it.
 
 You have to compile your main.c with `./libft/libft.a`
 
-Also you have to include `#include "libft/includes/libft.h"` in your code.
+Also you have to include `#include "libft.h"` in your code.

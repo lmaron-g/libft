@@ -1,4 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_error.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 19:59:28 by lmaron-g          #+#    #+#             */
+/*   Updated: 2019/05/20 19:59:57 by lmaron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/libft.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
 
 void		print_error(char *massage)
 {
@@ -7,4 +22,10 @@ void		print_error(char *massage)
 	else
 		perror(massage);
 	exit(1);
+}
+
+void		termination(char *massage, int fd)
+{
+	ft_putendl_fd(massage, fd);
+	exit(0);
 }
