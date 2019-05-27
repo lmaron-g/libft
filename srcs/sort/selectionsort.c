@@ -9,7 +9,7 @@ void	selection_sort(t_stack *a)
 	i = 0;
 	while (i < a->lenght)
 	{
-		lowest_value_index = a->stack[i];
+		lowest_value_index = i;
 		j = i;
 		while (++j < a->lenght)
 			if (a->stack[j] < a->stack[lowest_value_index])

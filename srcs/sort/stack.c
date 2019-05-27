@@ -12,18 +12,43 @@
 
 #include "libft.h"
 
+
+t_stack		*stackcpy(t_stack *a)
+{
+	int	i;
+	t_stack	*b;
+	
+	i = 0;
+	b = stack_init(a->id, a->lenght, 0, a->debug);
+	while (i < a->lenght)
+	{
+		b->stack[i] = a->stack[i];
+		i++;
+	}
+	return (b);
+}
+
 void		mid(t_stack *a)
 {
 	int		i;
-	int		dif;
-	int		sum;
+	int		j;
+	t_stack	*b;
+	int		lowest_value_index;
 
-	i = -1;
-	sum = 0;
-	dif = MAX_INT;
-	while (++i < a->lenght)
-		sum += a->stack[i];
-	a->mid = sum / a->lenght;
+	i = 0;
+	b = stackcpy(a);
+	while (i <= b->lenght / 2)
+	{
+		lowest_value_index = i;
+		j = i;
+		while (++j < b->lenght)
+			if (b->stack[j] < b->stack[lowest_value_index])
+				lowest_value_index = j;
+		swap_elem(b, i, lowest_value_index);
+		i++;
+	}
+	a->mid = b->stack[i - 1];
+	stack_free(&b);
 }
 
 int			is_sorted(t_stack *a, t_stack *b)
