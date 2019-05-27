@@ -70,7 +70,6 @@ STRINGS = 		ft_catpro.c       \
 				ft_strjoin.c       \
 				ft_strtrim.c       \
 				ft_strsplit.c      \
-				ft_nbrsplit.c      \
 				get_next_line.c    \
 
 OUTPUT =		ft_putchar.c       \
@@ -123,7 +122,6 @@ OTHER = 		ft_bzero.c         \
 				ft_nbrlen.c        \
 				find_min.c         \
 				find_max.c         \
-				ft_median.c        \
 				duplicates.c       \
 
 SORT = 			init.c             \

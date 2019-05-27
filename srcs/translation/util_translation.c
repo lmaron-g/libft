@@ -152,10 +152,8 @@ char					*ft_ftoa(long double n, int precision)
 	unsigned char		trans;
 
 	i = 0;
-	if (n < 0.0 && (n = -n))
-		s1 = ft_strdup("-");
-	else
-		s1 = ft_strdup("");
+	n *= n < 0.0 ? -1 : 1;
+	s1 = n < 0.0 ? ft_strdup("-") : ft_strdup("");
 	s2 = ft_itoa_ll(FT_ABS((long)n));
 	ft_strmerge(&s1, &s2);
 	s2 = ft_strnew(++precision);

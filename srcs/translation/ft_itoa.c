@@ -10,28 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
-char		*ft_itoa(int n)
+char		*ft_itoa(long int nbr)
 {
-	char	*str;
+	int		len;
+	char	*out;
 
-	if (!(str = (char *)malloc(2)))
-		return (0);
-	if (n == -2147483648)
-		return (ft_strcpy(str, "-2147483648"));
-	if (n < 0)
+	len = ft_nbrlen(nbr);
+	out = ft_strnew(len);
+	if (nbr < 0)
 	{
-		str[0] = '-';
-		str[1] = '\0';
-		str = ft_strjoin(str, ft_itoa(-n));
+		out[0] = '-';
+		nbr = -nbr;
 	}
-	else if (n >= 10)
-		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
-	else if (n < 10 && n >= 0)
+	while (--len >= 0 && nbr)
 	{
-		str[0] = n + '0';
-		str[1] = '\0';
+		out[len] = nbr % 10 + 48;
+		nbr /= 10;
 	}
-	return (str);
+	return (out);
 }

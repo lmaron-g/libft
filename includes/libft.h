@@ -150,7 +150,7 @@ char				**ft_strsplit(char const *s, char c);
 int					*ft_nbrsplit(char const *s, char c);
 void				free_words(char ***words);
 size_t				count_words(char const *str, char c);
-char				*ft_itoa(int n);
+char				*ft_itoa(long int nbr);
 
 int					ft_isdigit_base(char c, int base);
 t_bool				ft_isnumber_base(char *str, int base);
