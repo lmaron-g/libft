@@ -31,7 +31,7 @@ void			free_words(char ***words)
 	i = 0;
 	while ((*words)[i])
 	{
-		free((*words)[i]);
+		ft_strdel(&(*words)[i]);
 		(*words)[i++] = 0;
 	}
 	free(*words);

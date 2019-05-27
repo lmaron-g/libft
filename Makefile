@@ -122,7 +122,6 @@ OTHER = 		ft_bzero.c         \
 				ft_nbrlen.c        \
 				find_min.c         \
 				find_max.c         \
-				ft_median.c        \
 				duplicates.c       \
 
 SORT = 			init.c             \

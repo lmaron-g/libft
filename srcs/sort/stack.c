@@ -12,7 +12,6 @@
 
 #include "libft.h"
 
-
 t_stack		*stackcpy(t_stack *a)
 {
 	int	i;

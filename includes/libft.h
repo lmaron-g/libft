@@ -105,6 +105,7 @@ int					find_min(t_stack *a);
 int					find_min_(int *a, int lenght);
 int					index_min(t_stack *a);
 int					index_min_(int *a, int lenght);
+int					find_abs_max(t_stack *a);
 
 int					ft_median(int *stack, int lenght);
 void				*ft_memalloc(size_t size);
@@ -150,7 +151,6 @@ int					*ft_nbrsplit(char const *s, char c);
 void				free_words(char ***words);
 size_t				count_words(char const *str, char c);
 char				*ft_itoa(long int nbr);
-
 
 int					ft_isdigit_base(char c, int base);
 t_bool				ft_isnumber_base(char *str, int base);
@@ -234,6 +234,7 @@ void				print_specifier_l_w(t_specifier spec, va_list ap);
 void				print_specifier_w(t_specifier spec, va_list ap);
 
 t_stack				*stack_init(char id, int lenght, int mid, int debug);
+t_stack				*stackcpy(t_stack *a);
 void				stack_free(t_stack **a);
 void				quick_sort(t_stack *a);
 void				selection_sort(t_stack *a);
