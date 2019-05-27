@@ -125,9 +125,8 @@ char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 int					*ft_nbrsplit(char const *s, char c);
 void				free_words(char ***words);
-size_t				count_of_words(char const *str, char c);
-char				*ft_itoa(int n);
-
+size_t				count_words(char const *str, char c);
+char				*ft_itoa(long int nbr);
 
 
 int					ft_isdigit_base(char c, int base);

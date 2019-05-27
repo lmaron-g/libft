@@ -69,7 +69,6 @@ STRINGS = 		ft_cat_pro.c       \
 				ft_strjoin.c       \
 				ft_strtrim.c       \
 				ft_strsplit.c      \
-				ft_nbrsplit.c      \
 				get_next_line.c    \
 
 OUTPUT =		ft_putchar.c       \
