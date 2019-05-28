@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-static char			**ft_wordsnew(size_t size)
+static char		**ft_wordsnew(size_t size)
 {
-	char			**area;
+	char		**area;
 
 	if (size == SIZE_T_MAX)
 		size--;
@@ -26,7 +26,7 @@ static char			**ft_wordsnew(size_t size)
 
 void			free_words(char ***words)
 {
-	int				i;
+	int			i;
 
 	i = 0;
 	while ((*words)[i])
@@ -38,10 +38,10 @@ void			free_words(char ***words)
 	(*words) = 0;
 }
 
-size_t		count_words(char const *str, char c)
+size_t			count_words(char const *str, char c)
 {
-	int				i;
-	size_t			cw;
+	int			i;
+	size_t		cw;
 
 	i = 0;
 	cw = 0;
@@ -59,11 +59,11 @@ size_t		count_words(char const *str, char c)
 	return (cw);
 }
 
-static char			*ft_subword(char const *s, int start, char c)
+static char		*ft_subword(char const *s, int start, char c)
 {
-	int				i;
-	size_t			len;
-	char			*fresh;
+	int			i;
+	size_t		len;
+	char		*fresh;
 
 	i = 0;
 	len = 0;
@@ -79,11 +79,11 @@ static char			*ft_subword(char const *s, int start, char c)
 	return (fresh);
 }
 
-char				**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
-	int				i;
-	int				j;
-	char			**words;
+	int			i;
+	int			j;
+	char		**words;
 
 	i = 0;
 	j = 0;

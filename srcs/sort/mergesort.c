@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mergesort.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/28 14:35:14 by lmaron-g          #+#    #+#             */
+/*   Updated: 2019/05/28 14:35:16 by lmaron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static void	merge(t_stack *a, t_stack *buf, int first, int last)
@@ -13,7 +25,7 @@ static void	merge(t_stack *a, t_stack *buf, int first, int last)
 	i = first;
 	while (i <= last)
 	{
-		if ((start <= mid) && 
+		if ((start <= mid) &&
 			((end > last) || (a->stack[start] < a->stack[end])))
 			buf->stack[i] = a->stack[start++];
 		else
@@ -28,7 +40,7 @@ static void	merge(t_stack *a, t_stack *buf, int first, int last)
 static void	mergesort_(t_stack *a, t_stack *buf, int first, int last)
 {
 	int		mid;
-	
+
 	if (first < last)
 	{
 		mid = first + (last - first) / 2;

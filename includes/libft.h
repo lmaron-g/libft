@@ -40,13 +40,12 @@
 
 # define BUFF_SIZE 2048
 
+# define ERR_PUSH_USAGE "Usage: ./push_swap [-v] [STACK]"
+# define ERR_STACK_INIT "Initialization error: stack_init();"
+# define ERR_INVALID "Invalid stack"
 
-#define ERR_PUSH_USAGE "Usage: ./push_swap [-v] [STACK]"
-#define ERR_STACK_INIT "Initialization error: stack_init();"
-#define ERR_INVALID "Invalid stack"
-
-#define ERR_CHECKER "KO"
-#define CHECKER_OK "OK"
+# define ERR_CHECKER "KO"
+# define CHECKER_OK "OK"
 
 typedef enum
 {
@@ -81,16 +80,16 @@ typedef struct		s_file
 	struct s_file	*next;
 }					t_file;
 
-typedef struct	s_stack
+typedef struct		s_stack
 {
-	char		id;
-	int			mid;
-	int			min;
-	int			max;
-	int			debug;
-	int			lenght;
-	int			*stack;
-}				t_stack;
+	char			id;
+	int				mid;
+	int				min;
+	int				max;
+	int				debug;
+	int				lenght;
+	int				*stack;
+}					t_stack;
 
 int g_r;
 

@@ -18,7 +18,7 @@ t_stack		*stack_init(char id, int lenght, int mid, int debug)
 
 	if (!(stack = (t_stack*)ft_memalloc(sizeof(t_stack))))
 		print_error(ERR_STACK_INIT);
-	if (!(stack->stack = (int*)ft_memalloc(sizeof(int)*lenght)))
+	if (!(stack->stack = (int*)ft_memalloc(sizeof(int) * lenght)))
 		print_error(ERR_STACK_INIT);
 	stack->lenght = lenght;
 	stack->debug = debug;

@@ -14,9 +14,9 @@
 
 t_stack		*stackcpy(t_stack *a)
 {
-	int	i;
+	int		i;
 	t_stack	*b;
-	
+
 	i = 0;
 	b = stack_init(a->id, a->lenght, 0, a->debug);
 	while (i < a->lenght)

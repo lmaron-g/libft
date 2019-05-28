@@ -64,7 +64,7 @@ int			find_abs_max(t_stack *a)
 	int		i;
 	t_stack	*b;
 	int		out;
-	
+
 	i = 0;
 	b = stack_init(a->id, a->lenght, 0, a->debug);
 	while (i < a->lenght)
