@@ -29,6 +29,8 @@
 # define PURPUL	"\033[0;35m"
 # define CYAN	"\033[0;36m"
 
+# define TRUE 1
+# define FALSE 0
 # define SIZE_T_MAX 65535
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
@@ -38,7 +40,7 @@
 # define IS_NAN(num) ((num != num) ? 1 : 0)
 # define IS_INF(num) ((num == (1.0 / 0.0) || num == (-1.0 / 0.0)) ? 1 : 0)
 
-# define BUFF_SIZE 2048
+# define BUFF_SIZE 1
 
 # define ERR_PUSH_USAGE "Usage: ./push_swap [-v] [STACK]"
 # define ERR_STACK_INIT "Initialization error: stack_init();"
@@ -47,11 +49,14 @@
 # define ERR_CHECKER "KO"
 # define CHECKER_OK "OK"
 
-typedef enum
-{
-	false,
-	true
-}	t_bool;
+#define A(c) (c == ' ')
+#define B(c) (c == '\n')
+#define C(c) (c == '\t')
+#define D(c) (c == '\v')
+#define I(c) (c == '\f')
+#define F(c) (c == '\r')
+
+#define SP(c) (A(c) || B(c) || C(c) || D(c) || I(c) || F(c))
 
 typedef struct		s_specifier
 {
@@ -145,6 +150,7 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
+char				**ft_wordsnew(size_t size);
 char				**ft_strsplit(char const *s, char c);
 int					*ft_nbrsplit(char const *s, char c);
 void				free_words(char ***words);
@@ -152,8 +158,8 @@ size_t				count_words(char const *str, char c);
 char				*ft_itoa(long int nbr);
 
 int					ft_isdigit_base(char c, int base);
-t_bool				ft_isnumber_base(char *str, int base);
-t_bool				ft_has_prefix(const char *str, int base);
+_Bool				ft_isnumber_base(char *str, int base);
+_Bool				ft_has_prefix(const char *str, int base);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -247,5 +253,6 @@ void				swap_elem(t_stack *stack, int a, int b);
 
 void				print_error(char *massage);
 void				termination(char *massage, int fd);
+int					project_free(char *massage);
 
 #endif

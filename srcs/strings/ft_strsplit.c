@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char		**ft_wordsnew(size_t size)
+char			**ft_wordsnew(size_t size)
 {
 	char		**area;
 
@@ -29,6 +29,8 @@ void			free_words(char ***words)
 	int			i;
 
 	i = 0;
+	if (!(words && *words))
+		return ;
 	while ((*words)[i])
 	{
 		ft_strdel(&(*words)[i]);

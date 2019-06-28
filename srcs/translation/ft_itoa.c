@@ -19,6 +19,8 @@ char		*ft_itoa(long int nbr)
 
 	len = ft_nbrlen(nbr);
 	out = ft_strnew(len);
+	if (!nbr)
+		out[0] = 48;
 	if (nbr < 0)
 	{
 		out[0] = '-';

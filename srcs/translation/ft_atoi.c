@@ -17,6 +17,7 @@
 #define I(c) (c == '\f')
 #define F(c) (c == '\r')
 
+#define ERR_ATOI "ERROR: Invalid number"
 #define SP(c) (A(c) || B(c) || C(c) || D(c) || I(c) || F(c))
 
 #include "libft.h"
@@ -36,7 +37,7 @@ int					ft_isdigit_base(char c, int base)
 	return (-1);
 }
 
-t_bool				ft_has_prefix(const char *str, int base)
+_Bool				ft_has_prefix(const char *str, int base)
 {
 	size_t			i;
 
@@ -44,18 +45,18 @@ t_bool				ft_has_prefix(const char *str, int base)
 	if (base == 2 || base == 8 || base == 16)
 	{
 		if (str[i++] != '0')
-			return (false);
+			return (FALSE);
 		if (base == 2 && (str[i] == 'b' || str[i] == 'B'))
-			return (true);
+			return (TRUE);
 		if (base == 16 && (str[i] == 'x' || str[i] == 'X'))
-			return (true);
+			return (TRUE);
 		if (base == 8)
-			return (true);
+			return (TRUE);
 	}
-	return (false);
+	return (FALSE);
 }
 
-t_bool				ft_isnumber_base(char *str, int base)
+_Bool				ft_isnumber_base(char *str, int base)
 {
 	size_t			i;
 	size_t			digits;
@@ -65,7 +66,7 @@ t_bool				ft_isnumber_base(char *str, int base)
 	while (SP(str[i]))
 		i++;
 	if (base != 10 && !ft_has_prefix(&str[i], base))
-		return (false);
+		return (FALSE);
 	if (base == 2 || base == 16)
 		i += 2;
 	else if (base == 8)
@@ -77,7 +78,7 @@ t_bool				ft_isnumber_base(char *str, int base)
 		i++;
 		digits++;
 	}
-	return ((!str[i] && digits) ? true : false);
+	return ((!str[i] && digits) ? TRUE : FALSE);
 }
 
 int					ft_atoi_base(const char *str, int base)
@@ -92,7 +93,7 @@ int					ft_atoi_base(const char *str, int base)
 	while (SP(str[i]))
 		i++;
 	if (base != 10 && !ft_has_prefix(&str[i], base))
-		return (false);
+		return (FALSE);
 	if (base == 2 || base == 16)
 		i += 2;
 	else if (base == 8)
@@ -125,8 +126,8 @@ int					ft_atoi(const char *str)
 		temp = num;
 		num *= 10;
 		num += ((int)str[i] - 48);
-		if (num < temp)
-			return (neg == 1 ? 0 : -1);
+		if (num < MIN_INT || MAX_INT < num)
+			project_free(ERR_ATOI);
 		i++;
 	}
 	return (neg == 1 ? -num : num);
