@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: gdamion- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 18:39:58 by lmaron-g          #+#    #+#              #
-#    Updated: 2018/12/01 18:40:00 by lmaron-g         ###   ########.fr        #
+#    Updated: 2019/07/05 13:51:55 by gdamion-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,18 +132,24 @@ SORT = 			init.c             \
 				mergesort.c        \
 				selectionsort.c    \
 
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
 all: $(NAME)
 
 $(NAME):
-		@gcc -g $(42FLAGS) -c $(SRC_DIRS) -I ./includes
-		@mkdir -p $(OBJ_D) && mv $(SRCS:.c=.o) ./$(OBJ_D)
-		@ar rc $(NAME) $(OBJS)
-		@ranlib $(NAME)
+	@gcc -g $(42FLAGS) -c $(SRC_DIRS) -I ./includes
+	@mkdir -p $(OBJ_D) && mv $(SRCS:.c=.o) ./$(OBJ_D)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
 
 clean:
-		@rm -rf $(OBJ_D)
+	@rm -rf $(OBJ_D)/
+	@echo "$(NAME): $(RED)$(OBJ_D)/ folder was deleted$(RESET)"
 
 fclean: clean
-		@rm -rf $(NAME)
+	@rm -rf $(NAME)
+	@echo "$(NAME): $(RED)$(NAME) binary was deleted$(RESET)"
 
 re: fclean all
