@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdamion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 22:04:37 by lmaron-g          #+#    #+#             */
-/*   Updated: 2018/11/21 22:04:39 by lmaron-g         ###   ########.fr       */
+/*   Updated: 2019/07/09 14:47:53 by gdamion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ int					ft_atoi(const char *str)
 	int				neg;
 	int				i;
 	long long int	num;
-	long long int	temp;
 
 	i = 0;
 	neg = 0;
@@ -123,7 +122,6 @@ int					ft_atoi(const char *str)
 		i++;
 	while (str[i] >= 48 && str[i] <= 57)
 	{
-		temp = num;
 		num *= 10;
 		num += ((int)str[i] - 48);
 		if (num < MIN_INT || MAX_INT < num)
