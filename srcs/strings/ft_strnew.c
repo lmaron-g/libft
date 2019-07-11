@@ -15,6 +15,6 @@
 char		*ft_strnew(size_t size)
 {
 	if (size == SIZE_T_MAX)
-		project_free("ft_strnew: incorrect size");
+		print_error("ft_strnew: incorrect size");
 	return ((char *)ft_memalloc(sizeof(char) * (size + 1)));
 }
