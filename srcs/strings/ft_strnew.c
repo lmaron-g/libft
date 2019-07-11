@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdamion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:58:24 by lmaron-g          #+#    #+#             */
-/*   Updated: 2018/11/22 12:58:30 by lmaron-g         ###   ########.fr       */
+/*   Updated: 2019/07/11 16:39:41 by gdamion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 char		*ft_strnew(size_t size)
 {
 	if (size == SIZE_T_MAX)
-		project_free("ft_strnew: incorrect size");
+		print_error("ft_strnew: incorrect size");
 	return ((char *)ft_memalloc(sizeof(char) * (size + 1)));
 }
