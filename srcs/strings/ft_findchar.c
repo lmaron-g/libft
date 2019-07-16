@@ -20,10 +20,10 @@ int		ft_findchar(char *str, int c)
 	while (str[i])
 	{
 		if (str[i] == (char)c)
-			return (i);
+			return (i + 1);
 		i++;
 	}
 	if (str[i] == (char)c)
-		return (i);
+		return (i + 1);
 	return (0);
 }

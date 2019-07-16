@@ -125,7 +125,7 @@ int					ft_atoi(const char *str)
 		num *= 10;
 		num += ((int)str[i] - 48);
 		if (num < MIN_INT || MAX_INT < num)
-			project_free(ERR_ATOI);
+			print_error(ERR_ATOI);
 		i++;
 	}
 	return (neg == 1 ? -num : num);
