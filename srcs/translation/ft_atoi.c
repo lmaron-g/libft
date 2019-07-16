@@ -6,7 +6,7 @@
 /*   By: gdamion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 22:04:37 by lmaron-g          #+#    #+#             */
-/*   Updated: 2019/07/09 14:47:53 by gdamion-         ###   ########.fr       */
+/*   Updated: 2019/07/16 15:37:11 by gdamion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int					ft_atoi(const char *str)
 		num *= 10;
 		num += ((int)str[i] - 48);
 		if (num < MIN_INT || MAX_INT < num)
-			project_free(ERR_ATOI);
+			print_error(ERR_ATOI);
 		i++;
 	}
 	return (neg == 1 ? -num : num);

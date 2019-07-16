@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_findchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdamion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 17:40:55 by lmaron-g          #+#    #+#             */
-/*   Updated: 2018/11/21 17:40:57 by lmaron-g         ###   ########.fr       */
+/*   Updated: 2019/07/16 15:41:10 by gdamion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int		ft_findchar(char *str, int c)
 	}
 	if (str[i] == (char)c)
 		return (i);
-	return (0);
+	return (-1);
 }
