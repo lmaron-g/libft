@@ -57,6 +57,7 @@
 #define F(c) (c == '\r')
 
 #define SP(c) (A(c) || B(c) || C(c) || D(c) || I(c) || F(c))
+#define SP1(c) (A(c) || C(c) || D(c) || I(c) || F(c))
 
 typedef struct		s_specifier
 {
@@ -253,7 +254,7 @@ int					is_sorted(t_stack *a, t_stack *b);
 void				swap_elem(t_stack *stack, int a, int b);
 
 void				print_error(char *massage);
-void				termination(char *massage, int fd);
+void				termination(char *massage, char *line, int x);
 int					project_free(char *massage);
 
 #endif
