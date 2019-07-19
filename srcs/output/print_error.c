@@ -23,9 +23,3 @@ void		print_error(char *massage)
 		perror(massage);
 	exit(1);
 }
-
-void		termination(char *massage, int fd)
-{
-	ft_putendl_fd(massage, fd);
-	exit(0);
-}
