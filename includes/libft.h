@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdamion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 16:35:35 by lmaron-g          #+#    #+#             */
-/*   Updated: 2019/01/08 16:35:37 by lmaron-g         ###   ########.fr       */
+/*   Updated: 2019/07/19 16:19:37 by gdamion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@
 # define ERR_CHECKER "KO"
 # define CHECKER_OK "OK"
 
-#define A(c) (c == ' ')
-#define B(c) (c == '\n')
-#define C(c) (c == '\t')
-#define D(c) (c == '\v')
-#define I(c) (c == '\f')
-#define F(c) (c == '\r')
+# define A(c) (c == ' ')
+# define B(c) (c == '\n')
+# define C(c) (c == '\t')
+# define D(c) (c == '\v')
+# define I(c) (c == '\f')
+# define F(c) (c == '\r')
 
-#define SP(c) (A(c) || B(c) || C(c) || D(c) || I(c) || F(c))
+# define SP(c) (A(c) || B(c) || C(c) || D(c) || I(c) || F(c))
 
 typedef struct		s_specifier
 {
