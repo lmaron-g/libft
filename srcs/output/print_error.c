@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdamion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 19:59:28 by lmaron-g          #+#    #+#             */
-/*   Updated: 2019/05/20 19:59:57 by lmaron-g         ###   ########.fr       */
+/*   Updated: 2019/07/18 19:33:23 by gdamion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,12 @@
 #include <stdio.h>
 #include <errno.h>
 
-void		print_error(char *massage)
+void		print_error(char *message)
 {
 	if (errno == 0)
-		ft_putendl_fd(massage, 2);
+		ft_putendl_fd(message, 2);
 	else
-		perror(massage);
+		perror(message);
+	ft_putstr_fd(EOC, 2);
 	exit(1);
-}
-
-void		termination(char *massage, int fd)
-{
-	ft_putendl_fd(massage, fd);
-	exit(0);
 }
