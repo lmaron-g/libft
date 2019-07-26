@@ -1,22 +1,19 @@
-![alt text](https://pp.userapi.com/c846018/v846018615/177c9d/jGkPPa9Zapw.jpg)
-
-
 # Libft
 
 This is my handmade C library.
 
 Here you can find functions for working with `strings`, `memory`, `output` etc.
 
+![libft](https://user-images.githubusercontent.com/45558274/61978023-baaa8b80-aff8-11e9-8b47-8f4f688d1b33.png)
 
 ## Installation
 
-Clone or download this repo and place it in the workspase folder.
-
-Go to `libft` directory and `make` it.
-
+```
+git clone git@github.com:lmaron-g/libft.git; cd libft; make
+```
 
 ## Run
 
-You have to compile your main.c with `./libft/libft.a`
+You have to compile your `SRC files` with `./libft/libft.a`
 
 Also you have to include `#include "libft.h"` in your code.

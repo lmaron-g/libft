@@ -33,7 +33,6 @@ SRC_DIRS = 	$(OTHER_D) $(SORT_D) $(OUTPUT_D) $(MEMORY_D) $(STRINGS_D) $(UTIL_IS_
 OBJ_D = objs
 OBJS  = $(addprefix $(OBJ_D)/,$(SRCS:.c=.o))
 
-
 MEMORY = 		ft_memccpy.c       \
 				ft_memchr.c        \
 				ft_memcmp.c        \
@@ -139,11 +138,12 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(NAME):
-	@gcc -g $(42FLAGS) -c $(SRC_DIRS) -I ./includes
+$(NAME): $(SRC_DIRS)
+	@gcc $(42FLAGS) -c $(SRC_DIRS) -I ./includes
 	@mkdir -p $(OBJ_D) && mv $(SRCS:.c=.o) ./$(OBJ_D)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
+	@echo "$(NAME): $(GREEN)$(NAME) binary was built$(RESET)"
 
 clean:
 	@rm -rf $(OBJ_D)/
